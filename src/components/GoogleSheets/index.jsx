@@ -1,6 +1,5 @@
-import Button from '@material-ui/core/Button'
-import Grid from '@material-ui/core/Grid'
-import Link from '@material-ui/core/Link'
+// import Button from '@material-ui/core/Button'
+import Grid from "@material-ui/core/Grid"
 import Modal from '@material-ui/core/Modal'
 import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
@@ -8,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import { navigate } from "@reach/router"
 import axios from "axios"
+import { Button, Link } from "gatsby-theme-material-ui"
 import React, { useState } from 'react'
 import TextField from '../TextField'
 
@@ -79,7 +79,7 @@ function GoogleSheets() {
 
     axios.post(connectionURL, formValue).then((response) => {
       console.log(response)
-      navigate(`/thankyou`)
+      navigate(`/thank-you/`)
     })
   }
 
@@ -100,95 +100,90 @@ function GoogleSheets() {
   )
 
   return (
-    <div className="flex items-center justify-center mx-auto w-1/2">
+    <div className='flex items-center justify-center mx-auto w-full'>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6} component={Paper} elevation={6} square>
           <div className={classes.paper}>
-            <div className="my-2">
-              <Typography variant="body2" gutterBottom>
+            <div className='my-2'>
+              <Typography variant='body2' gutterBottom>
                 點擊前往
                 <Link
-                  href="https://docs.google.com/spreadsheets/d/1kDZReOEau2uXPwyFyS4xsKFE_a2aJiZvUNTtOT66uqo/edit?usp=sharing"
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                  href='https://docs.google.com/spreadsheets/d/1kDZReOEau2uXPwyFyS4xsKFE_a2aJiZvUNTtOT66uqo/edit?usp=sharing'
+                  target='_blank'
+                  rel='noreferrer'>
                   Google試算表
                 </Link>
               </Typography>
             </div>
             <form
               className={classes.form}
-              method="post"
-              data-sheet-best="https://sheet.best/api/sheets/42627f2d-e682-427a-928a-154ff1e109df"
-              onSubmit={handleSubmit}
-            >
+              method='post'
+              data-sheet-best='https://sheet.best/api/sheets/42627f2d-e682-427a-928a-154ff1e109df'
+              onSubmit={handleSubmit}>
               <TextField
                 required
-                label="Name"
-                placeholder="Enter your name"
-                type="text"
-                name="name"
-                id="name"
+                label='Name'
+                placeholder='Enter your name'
+                type='text'
+                name='name'
+                id='name'
                 value={formValue.name}
                 onChange={handleChange}
               />
 
               <TextField
                 required
-                label="Age"
-                placeholder="Enter your age"
-                type="number"
-                name="age"
-                id="age"
+                label='Age'
+                placeholder='Enter your age'
+                type='number'
+                name='age'
+                id='age'
                 value={formValue.age}
                 onChange={handleChange}
               />
 
               <TextField
                 required
-                label="Salary"
-                placeholder="Enter your salary"
-                type="number"
-                name="salary"
-                id="salary"
+                label='Salary'
+                placeholder='Enter your salary'
+                type='number'
+                name='salary'
+                id='salary'
                 value={formValue.salary}
                 onChange={handleChange}
               />
 
               <TextField
                 required
-                label="Hobby"
-                placeholder="Enter your hobby"
-                type="text"
-                name="hobby"
-                id="hobby"
+                label='Hobby'
+                placeholder='Enter your hobby'
+                type='text'
+                name='hobby'
+                id='hobby'
                 value={formValue.hobby}
                 onChange={handleChange}
               />
               <Button
-                color="primary"
-                variant="contained"
-                type="submit"
-                className={classes.submit}
-              >
+                color='primary'
+                variant='contained'
+                type='submit'
+                className={classes.submit}>
                 Submit
               </Button>
             </form>
             <Button
-              color="secondary"
-              variant="outlined"
-              type="button"
+              color='secondary'
+              variant='outlined'
+              type='button'
               className={classes.submit}
-              onClick={handleModalOpen}
-            >
+              onClick={handleModalOpen}>
               Open Modal
             </Button>
             <Modal
               open={modalOpen}
               onClose={handleModalClose}
-              aria-labelledby="simple-modal-title"
-              aria-describedby="simple-modal-description"
-            >
+              aria-labelledby='simple-modal-title'
+              aria-describedby='simple-modal-description'>
               {modalBody}
             </Modal>
           </div>
