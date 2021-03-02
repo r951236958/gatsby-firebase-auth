@@ -6,7 +6,6 @@ import Login from "../app/login"
 import Main from "../app/main"
 import Profile from "../app/profile"
 import Layout from "../components/Layout"
-import SEO from "../components/SEO"
 
 function PublicRoute(props) {
   return <div>{props.children}</div>
@@ -16,17 +15,16 @@ function PublicRoute(props) {
 const App = ({title}) => {
 
   return (
-  <Layout siteTitle={title}>
-    <SEO title={title} />
-    <NavBar />
-    <Router>
-        <PrivateRoute path="/app/profile" component={Profile} />
-        <PublicRoute path="/app">
-          <PrivateRoute path="/" component={Main} />
-          <Login path="/login" />
+    <Layout siteTitle={title}>
+      <NavBar />
+      <Router>
+        <PrivateRoute path='/app/profile' component={Profile} />
+        <PublicRoute path='/app'>
+          <PrivateRoute path='/' component={Main} />
+          <Login path='/login' />
         </PublicRoute>
       </Router>
-  </Layout>
-)}
+    </Layout>
+  )}
 
 export default App

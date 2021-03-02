@@ -16,15 +16,33 @@ const Login = () => {
       signInFlow: "popup",
       signInOptions: [
         auth.GoogleAuthProvider.PROVIDER_ID,
+        // firebaseApp.auth.FacebookAuthProvider.PROVIDER_ID,
+        auth.TwitterAuthProvider.PROVIDER_ID,
+        auth.GithubAuthProvider.PROVIDER_ID,
         auth.EmailAuthProvider.PROVIDER_ID,
+        // firebaseApp.auth.PhoneAuthProvider.PROVIDER_ID,
       ],
       // signInSuccessUrl: '/app/profile',
+      // callbacks: {
+      //   signInSuccessWithAuthResult: (result) => {
+      //     setUser(result.user)
+      //     navigate("/app/profile")
+      //   },
+      // },
       callbacks: {
-        signInSuccessWithAuthResult: (result) => {
-          setUser(result.user)
-          navigate("/app/profile")
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+          if (authResult.user) {
+            setUser(authResult.user)
+          }
+          return true
         },
       },
+      // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+      signInSuccessUrl: "/app/profile/",
+      // Terms of service url.
+      tosUrl: "https://www.google.com",
+      // Privacy policy url.
+      privacyPolicyUrl: "https://www.google.com",
     }
   }
 
