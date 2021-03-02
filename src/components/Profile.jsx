@@ -1,6 +1,6 @@
-import React from "react"
-import View from "./View"
-import { getUser } from "../utils/auth"
+import React from "react";
+import { getUser } from "../utils/auth";
+import SEO from "./SEO";
 
 const Profile = () => {
   const user = getUser();
@@ -8,7 +8,7 @@ const Profile = () => {
   const accessToken = user.stsTokenManager.accessToken; 
 
   return (
-    <View title="Your Profile">
+    <SEO title="Your Profile">
         <div>
           <p className="text-sm text-gray-600 flex items-center mb-4">
             <svg className="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -37,7 +37,7 @@ const Profile = () => {
             </ul>
           </p>
         </div>
-    </View>
+    </SEO>
   )
 }
 

@@ -9,8 +9,8 @@
 @import 'global.css';
 @import 'components/textfield.css';
 
-p {
-  margin-bottom: 1.5rem;
+body {
+  min-height: 100vh;
 }
 
 .btn {

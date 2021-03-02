@@ -1,19 +1,32 @@
-import React from "react"
 import { Router } from "@reach/router"
+import React from "react"
+import NavBar from "../app/components/NavBar"
+import PrivateRoute from "../app/components/PrivateRoute"
+import Login from "../app/login"
+import Main from "../app/main"
+import Profile from "../app/profile"
 import Layout from "../components/Layout"
-import Profile from "../components/Profile"
-import Login from "../components/Login"
-import PrivateRoute from "../components/PrivateRoute"
-import Status from "../components/Status"
+import SEO from "../components/SEO"
 
-const App = () => (
-  <Layout>
-    <Status />
+function PublicRoute(props) {
+  return <div>{props.children}</div>
+}
+
+
+const App = ({title}) => {
+
+  return (
+  <Layout siteTitle={title}>
+    <SEO title={title} />
+    <NavBar />
     <Router>
-      <PrivateRoute path="/app/profile" component={Profile} />
-      <Login path="/app/login" />
-    </Router>
+        <PrivateRoute path="/app/profile" component={Profile} />
+        <PublicRoute path="/app">
+          <PrivateRoute path="/" component={Main} />
+          <Login path="/login" />
+        </PublicRoute>
+      </Router>
   </Layout>
-)
+)}
 
 export default App

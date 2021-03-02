@@ -1,9 +1,9 @@
-import React from "react"
 import { navigate } from '@reach/router';
-import View from "./View"
+import firebase from "gatsby-plugin-firebase";
+import React from "react";
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import { setUser, isLoggedIn } from "../utils/auth"
-import firebase from "gatsby-plugin-firebase"
+import { isLoggedIn, setUser } from "../utils/auth";
+import SEO from "./SEO";
 
 const Login = () => {
 
@@ -29,10 +29,10 @@ const Login = () => {
   }
 
   return (
-    <View title="Log In">
+    <SEO title="Log In">
       <p>Please sign-in to access to the private route:</p>
       {firebase && <StyledFirebaseAuth uiConfig={getUiConfig(firebase.auth)} firebaseAuth={firebase.auth()}/>}
-    </View>
+    </SEO>
   );
 
 }
